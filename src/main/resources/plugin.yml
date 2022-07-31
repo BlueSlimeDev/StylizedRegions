@@ -1,0 +1,6 @@
+name: SlimePluginSpigot
+version: '${project.version}'
+main: me.blueslime.slimeplugin.spigot.Main
+api-version: 1.16
+authors: [ JustJustin ]
+description: SlimePlugin Template
