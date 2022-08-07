@@ -1,16 +1,16 @@
-package me.blueslime.slimeplugin.spigot;
+package me.blueslime.stylizedregions;
 
 import dev.mruniverse.slimelib.SlimePlugin;
 import dev.mruniverse.slimelib.SlimePluginInformation;
 import dev.mruniverse.slimelib.file.configuration.ConfigurationHandler;
 import dev.mruniverse.slimelib.logs.SlimeLogger;
 import dev.mruniverse.slimelib.logs.SlimeLogs;
-import me.blueslime.slimeplugin.spigot.exceptions.NotFoundLanguageException;
-import me.blueslime.slimeplugin.spigot.loader.PluginLoader;
-import me.blueslime.slimeplugin.spigot.loader.PluginLoaderDelay;
+import me.blueslime.stylizedregions.exceptions.NotFoundLanguageException;
+import me.blueslime.stylizedregions.loader.PluginLoader;
+import me.blueslime.stylizedregions.loader.PluginLoaderDelay;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin implements SlimePlugin<JavaPlugin> {
+public class StylizedRegions extends JavaPlugin implements SlimePlugin<JavaPlugin> {
 
     private SlimePluginInformation information;
 
@@ -23,6 +23,8 @@ public class Main extends JavaPlugin implements SlimePlugin<JavaPlugin> {
                 getServerType(),
                 this
         );
+
+        this.logs.getProperties().getPrefixes().changeMainText("StylizedRegions");
 
         this.information = new SlimePluginInformation(
                 getServerType(),

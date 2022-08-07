@@ -1,4 +1,4 @@
-package me.blueslime.slimeplugin.spigot.loader;
+package me.blueslime.stylizedregions.loader;
 
 import dev.mruniverse.slimelib.SlimeStorage;
 import dev.mruniverse.slimelib.file.configuration.ConfigurationHandler;
@@ -7,9 +7,10 @@ import dev.mruniverse.slimelib.file.configuration.provider.BukkitConfigurationPr
 import dev.mruniverse.slimelib.file.input.InputManager;
 import dev.mruniverse.slimelib.loader.BaseSlimeLoader;
 import dev.mruniverse.slimelib.logs.SlimeLogs;
-import me.blueslime.slimeplugin.spigot.Main;
-import me.blueslime.slimeplugin.spigot.SlimeFile;
-import me.blueslime.slimeplugin.spigot.utils.FileUtilities;
+import me.blueslime.stylizedregions.StylizedRegions;
+import me.blueslime.stylizedregions.SlimeFile;
+import me.blueslime.stylizedregions.commands.PluginCommand;
+import me.blueslime.stylizedregions.utils.FileUtilities;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
     private final File langDirectory;
 
-    public PluginLoader(Main plugin) {
+    public PluginLoader(StylizedRegions plugin) {
         super(plugin);
 
         super.storage(
@@ -49,6 +50,8 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
         if (loadDefaults) {
             loadDefaults();
         }
+
+        getCommands().register(new PluginCommand());
     }
 
     public void init() {

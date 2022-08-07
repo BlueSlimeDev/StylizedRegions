@@ -1,6 +1,6 @@
-name: SlimePluginSpigot
+name: StylizedRegions
 version: '${project.version}'
-main: me.blueslime.slimeplugin.spigot.Main
+main: me.blueslime.stylizedregions.StylizedRegions
 api-version: 1.16
 authors: [ JustJustin ]
-description: SlimePlugin Template
+description: Simple Region Plugin

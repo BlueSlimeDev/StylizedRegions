@@ -1,4 +1,4 @@
-package me.blueslime.slimeplugin.spigot.utils;
+package me.blueslime.stylizedregions.utils;
 
 import dev.mruniverse.slimelib.file.configuration.handlers.util.FileUtils;
 import dev.mruniverse.slimelib.logs.SlimeLogs;

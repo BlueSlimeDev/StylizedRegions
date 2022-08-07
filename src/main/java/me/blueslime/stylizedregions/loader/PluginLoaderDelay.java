@@ -1,14 +1,14 @@
-package me.blueslime.slimeplugin.spigot.loader;
+package me.blueslime.stylizedregions.loader;
 
-import me.blueslime.slimeplugin.spigot.Main;
-import me.blueslime.slimeplugin.spigot.SlimeFile;
+import me.blueslime.stylizedregions.StylizedRegions;
+import me.blueslime.stylizedregions.SlimeFile;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class PluginLoaderDelay extends BukkitRunnable {
 
-    private final Main main;
+    private final StylizedRegions main;
 
-    public PluginLoaderDelay(Main main) {
+    public PluginLoaderDelay(StylizedRegions main) {
         this.main = main;
     }
 
