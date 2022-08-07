@@ -89,14 +89,21 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
                 logs,
                 langDirectory,
                 "en.yml",
-                "/lang/messages/en.yml"
+                "/lang/en.yml"
         );
 
         FileUtilities.load(
                 logs,
                 langDirectory,
                 "es.yml",
-                "/lang/messages/es.yml"
+                "/lang/es.yml"
+        );
+
+        FileUtilities.load(
+                logs,
+                langDirectory,
+                "es.yml",
+                "/lang/pl.yml"
         );
     }
 
