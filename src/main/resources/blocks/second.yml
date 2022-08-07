@@ -1,0 +1,14 @@
+# This is the name for the region
+name: "&a&l25x25"
+# Warning: the id need to be different for all regions!
+region-id: "ps25"
+# This will be the item to be placed to create a region
+block: "GOLDEN_ORE"
+# Size modifier:
+sizes:
+  ahead: 25
+  right: 24
+  behind: 25
+  left: 24
+  maxY: 250
+  minY: 10

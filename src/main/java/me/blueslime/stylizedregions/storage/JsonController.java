@@ -12,7 +12,7 @@ public class JsonController<K, V> {
     private static final Gson GSON = new Gson();
     private final StylizedRegions plugin;
 
-    private final Map<K, V> cache;
+    private Map<K, V> cache;
 
     private final Type type;
 
@@ -53,6 +53,10 @@ public class JsonController<K, V> {
 
         cache.put(key, value);
 
+        save();
+    }
+
+    public void save() {
         try (
                 FileOutputStream output = new FileOutputStream(file);
                 OutputStreamWriter writer = new OutputStreamWriter(output)
@@ -70,6 +74,10 @@ public class JsonController<K, V> {
             return cache.get(key);
         }
         return null;
+    }
+
+    public void replaceMap(Map<K, V> map) {
+        this.cache = map;
     }
 
     public Map<K, V> toMap() {

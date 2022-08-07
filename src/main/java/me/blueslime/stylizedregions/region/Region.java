@@ -2,9 +2,6 @@ package me.blueslime.stylizedregions.region;
 
 import dev.mruniverse.slimelib.file.configuration.ConfigurationHandler;
 import me.blueslime.stylizedregions.region.utils.Cuboid;
-import me.blueslime.stylizedregions.region.utils.RegionBuilder;
-import me.blueslime.stylizedregions.utils.LocationSerializer;
-import org.bukkit.Location;
 
 import java.util.UUID;
 
@@ -14,18 +11,10 @@ public class Region {
     private final UUID uuid;
     private Cuboid region;
 
-    public Region(String uuid, String name, String pos1, String pos2) {
-        this.uuid = UUID.fromString(uuid);
-        this.name = name;
-
-        Location point1 = LocationSerializer.fromString(pos1);
-        Location point2 = LocationSerializer.fromString(pos2);
-
-        this.region = RegionBuilder.build(
-                point1,
-                point2
-        );
-
+    public Region(String uuid, String name, Cuboid cuboid) {
+        this.region = cuboid;
+        this.uuid   = UUID.fromString(uuid);
+        this.name   = name;
     }
 
     /**
