@@ -25,30 +25,6 @@ public class PluginCommand implements SlimeCommand {
             sender.sendColoredMessage("&aCreated by JustJustin with &lLove");
             return;
         }
-        if (sender.hasPermission("test")) {
-            sender.sendColoredMessage("&aLoading..");
-
-            SlimePlayer slimePlayer = (SlimePlayer)sender;
-            Player player = slimePlayer.get();
-
-            sender.sendColoredMessage("&aCurrent Location: " + player.getLocation().getX() + ", " + player.getLocation().getY() + ", " + player.getLocation().getZ());
-
-            Location pos1 = RegionBuilder.calculatePosition(
-                    player.getLocation(),
-                    true, 10, 10, 10
-            );
-            sender.sendColoredMessage("&aPos1: " +
-                    pos1.getX() + ", " + pos1.getY() + ", " + pos1.getZ()
-            );
-
-            Location pos2 = RegionBuilder.calculatePosition(
-                    player.getLocation(),
-                    false, 10, 10, 10
-            );
-            sender.sendColoredMessage("&aPos2: " +
-                    pos2.getX() + ", " + pos2.getY() + ", " + pos2.getZ()
-            );
-
-        }
+        //TODO: ToDo
     }
 }
