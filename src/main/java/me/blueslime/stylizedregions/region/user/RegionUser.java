@@ -1,5 +1,6 @@
-package me.blueslime.stylizedregions.region;
+package me.blueslime.stylizedregions.region.user;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -9,7 +10,9 @@ import java.util.UUID;
 public class RegionUser {
     private List<String> regions = new ArrayList<>();
 
-    private final String currentRegion = "";
+    private String currentRegion = "";
+
+    private boolean status = false;
 
     private final Player player;
 
@@ -17,8 +20,28 @@ public class RegionUser {
         this.player = player;
     }
 
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public void setRegions(List<String> regions) {
         this.regions = regions;
+    }
+
+    public void setCurrentRegion(String region) {
+        this.currentRegion = region;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Location getLocation() {
+        return player.getLocation();
+    }
+
+    public List<String> getRegions() {
+        return regions;
     }
 
     public boolean hasPermission(String permission) {
@@ -27,6 +50,10 @@ public class RegionUser {
 
     public String getCurrentRegion() {
         return currentRegion;
+    }
+
+    public boolean isLoaded() {
+        return status;
     }
 
     public UUID getUniqueId() {

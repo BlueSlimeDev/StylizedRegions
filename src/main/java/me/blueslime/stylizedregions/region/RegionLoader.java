@@ -1,7 +1,9 @@
 package me.blueslime.stylizedregions.region;
 
+import dev.mruniverse.slimelib.file.configuration.ConfigurationHandler;
 import me.blueslime.stylizedregions.SlimeFile;
 import me.blueslime.stylizedregions.StylizedRegions;
+import me.blueslime.stylizedregions.region.user.RegionUser;
 import me.blueslime.stylizedregions.region.utils.Cuboid;
 import me.blueslime.stylizedregions.region.utils.RegionBuilder;
 import me.blueslime.stylizedregions.storage.JsonController;
@@ -22,7 +24,8 @@ public class RegionLoader {
     public RegionLoader(StylizedRegions plugin) {
 
         this.region = new JsonController<>(
-                plugin,
+                plugin.getLogs(),
+                plugin.getDataFolder(),
                 "regions",
                 String.class,
                 String.class
@@ -59,7 +62,15 @@ public class RegionLoader {
             }
         }
 
+        //: ToDo
+
         Region region = new Region(
+                plugin,
+                ConfigurationHandler.loadControl(
+                        null,
+                        null
+                ),
+                "ToDo",
                 user.getUniqueId().toString(),
                 user.getUsername(),
                 cuboid
@@ -75,4 +86,7 @@ public class RegionLoader {
         return region.toMap();
     }
 
+    public List<Region> getRegionList() {
+        return new ArrayList<>(regionList);
+    }
 }

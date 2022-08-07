@@ -1,20 +1,29 @@
 package me.blueslime.stylizedregions.region;
 
 import dev.mruniverse.slimelib.file.configuration.ConfigurationHandler;
+import dev.mruniverse.slimelib.file.configuration.TextDecoration;
+import me.blueslime.stylizedregions.SlimeFile;
+import me.blueslime.stylizedregions.StylizedRegions;
 import me.blueslime.stylizedregions.region.utils.Cuboid;
+import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
 public class Region {
-
+    private final ConfigurationHandler configuration;
+    private final StylizedRegions plugin;
     private final String name;
     private final UUID uuid;
+    private final String id;
     private Cuboid region;
 
-    public Region(String uuid, String name, Cuboid cuboid) {
+    public Region(StylizedRegions plugin, ConfigurationHandler configuration, String id, String uuid, String name, Cuboid cuboid) {
+        this.configuration = configuration;
+        this.plugin = plugin;
         this.region = cuboid;
         this.uuid   = UUID.fromString(uuid);
         this.name   = name;
+        this.id = id;
     }
 
     /**
@@ -41,6 +50,48 @@ public class Region {
         return name;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void send(boolean isJoining, Player player) {
+        Flags flag;
+        Flags secondFlag;
+        if (isJoining) {
+            flag = Flags.JOIN_MESSAGE;
+            secondFlag = Flags.JOIN_TITLE;
+        } else {
+            flag = Flags.QUIT_MESSAGE;
+            secondFlag = Flags.QUIT_TITLE;
+        }
+
+        player.sendMessage(
+            configuration.getString(
+                    TextDecoration.LEGACY,
+                    "flags." + flag.getPath(),
+                    (String)flag.getDefault(
+                        plugin.getConfigurationHandler(SlimeFile.SETTINGS)
+                    )
+            )
+        );
+
+        String[] split = configuration.getString(
+                TextDecoration.LEGACY,
+                "flags." + secondFlag.getPath(),
+                (String)flag.getDefault(
+                        plugin.getConfigurationHandler(SlimeFile.SETTINGS)
+                )
+        ).split("%nl%");
+
+        if (split.length == 1) {
+            //TODO: To-Do This is only when it only have a title
+            //TODO: MessageUtil.sendTitle(player, split[0]);
+        } else {
+            //TODO: To-Do This is only when it have title and subtitle
+            //TODO: MessageUtil.sendTitle(player, split[0], split[1]);
+        }
+    }
+
     /**
      * Get the region Cuboid
      * @return Cuboid
@@ -61,18 +112,13 @@ public class Region {
         PVP("pvp");
 
         private final String path;
-        private final Object def;
 
         Flags(String path) {
             this.path = path;
-            this.def = null;
         }
 
         public Object getDefault(ConfigurationHandler configuration) {
-            if (def == null) {
-                return configuration.get("default-region-flags." + path);
-            }
-            return def;
+            return configuration.get("default-region-flags." + path);
         }
 
         public String getPath() {
