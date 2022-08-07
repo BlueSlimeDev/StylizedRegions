@@ -1,1 +1,25 @@
-# LMAO
+# If you want to disable a specified flag message by default, use "" in the message.
+default-region-flags:
+  join-message: "&7Ahora estas en la region de %owner%"
+  quit-message: "&7Ya no estas en la region de %owner%"
+  block-place: "&7El dueño de esta region no te deja construir aqui"
+  block-break: "&7El dueño de esta region no te deja destruir bloques"
+  interact: "&7El dueño de esta region no te deja interactuar"
+
+plugin:
+  permission: "&cNo puedes hacer esto, no tienes permisos."
+  reloading: "&cRecargando... tal vez pueda romper regiones o causar lag, recomendamos el /restart!"
+  reloaded: "&aPlugin recargado!"
+
+region:
+  remove-member: "&aAhora %user% ya no forma parte de tu region"
+  flag-modify: "&aFlag: &f%flag% &aahora es: &f%value%"
+  add-member: "&aAhora %user% puede construir en tu region"
+  region-created: "&aHas puesto &b%block%&a, y has creado una region para ti!"
+  region-removed: "&aHas quitado &b%block%&a, y tu region fue eliminada!"
+  list-empty: "&cNo tienes ninguna region aun"
+  list-header: "&aRegion(es) [%size]:"
+  list-value: " &8- &7%id% - %location%"
+  error: "&cYa hay una region aqui, no puedes poner una region que haga conflicts!"
+
+
