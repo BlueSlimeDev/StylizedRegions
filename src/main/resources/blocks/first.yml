@@ -1,0 +1,14 @@
+# This is the name for the region
+name: "&a&l10x10"
+# Warning: the id need to be different for all regions!
+region-id: "ps10"
+# This will be the item to be placed to create a region
+block: "IRON_ORE"
+# Size modifier:
+sizes:
+  ahead: 10
+  right: 9
+  behind: 10
+  left: 9
+  maxY: 250
+  minY: 10

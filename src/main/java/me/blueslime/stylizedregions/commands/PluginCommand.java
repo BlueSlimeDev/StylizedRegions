@@ -3,10 +3,6 @@ package me.blueslime.stylizedregions.commands;
 import dev.mruniverse.slimelib.commands.command.Command;
 import dev.mruniverse.slimelib.commands.command.SlimeCommand;
 import dev.mruniverse.slimelib.commands.sender.Sender;
-import dev.mruniverse.slimelib.commands.sender.player.SlimePlayer;
-import me.blueslime.stylizedregions.region.utils.RegionBuilder;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 
 @Command(
         description = "Main Command of the plugin",

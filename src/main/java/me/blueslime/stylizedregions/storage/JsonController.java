@@ -1,28 +1,30 @@
 package me.blueslime.stylizedregions.storage;
 
 import com.google.gson.Gson;
-import me.blueslime.stylizedregions.StylizedRegions;
+import dev.mruniverse.slimelib.logs.SlimeLogs;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class JsonController<K, V> {
 
     private static final Gson GSON = new Gson();
-    private final StylizedRegions plugin;
 
-    private final Map<K, V> cache;
+    private final SlimeLogs logs;
+
+    private Map<K, V> cache;
 
     private final Type type;
 
     private final File file;
 
-    public <TK, TV> JsonController(StylizedRegions plugin, String name, TK tk, TV tv) {
-        this.plugin = plugin;
+    public <TK, TV> JsonController(SlimeLogs logs, File folder, String name, TK tk, TV tv) {
+        this.logs = logs;
 
         this.file = new File(
-                plugin.getDataFolder(),
+                folder,
                 name + ".json"
         );
 
@@ -42,10 +44,10 @@ public class JsonController<K, V> {
                         type
                 );
             } catch (IOException exception) {
-                plugin.getLogs().error("Failed to load" + file.getName() + ", Error:", exception);
+                logs.error("Failed to load" + file.getName() + ", Error:", exception);
             }
         }
-        return new HashMap<>();
+        return new ConcurrentHashMap<>();
     }
 
 
@@ -53,6 +55,20 @@ public class JsonController<K, V> {
 
         cache.put(key, value);
 
+        save();
+    }
+
+    public V computeIfAbsent(K key, V value) {
+        if (!cache.containsKey(key)) {
+            cache.put(key, value);
+        }
+
+        save();
+
+        return cache.get(key);
+    }
+
+    public void save() {
         try (
                 FileOutputStream output = new FileOutputStream(file);
                 OutputStreamWriter writer = new OutputStreamWriter(output)
@@ -61,7 +77,7 @@ public class JsonController<K, V> {
             writer.flush();
             output.flush();
         } catch (IOException exception) {
-            plugin.getLogs().error("Failed to " + file.getName() + ", Error:", exception);
+            logs.error("Failed to " + file.getName() + ", Error:", exception);
         }
     }
 
@@ -72,6 +88,10 @@ public class JsonController<K, V> {
         return null;
     }
 
+    public void replaceMap(Map<K, V> map) {
+        this.cache = map;
+    }
+
     public Map<K, V> toMap() {
         return cache;
     }
@@ -80,7 +100,6 @@ public class JsonController<K, V> {
     public String toString() {
         return "JsonController{" +
                 "type=" + type +
-                ", plugin=" + plugin +
                 ", cache=" + cache +
                 ", file=" + file +
                 '}';

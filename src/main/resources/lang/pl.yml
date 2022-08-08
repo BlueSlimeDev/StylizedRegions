@@ -1,0 +1,24 @@
+# Polish : Translated by SaKePl
+# If you want to disable a specified flag message by default, use "" in the message.
+default-region-flags:
+  join-message: "&7Wchodzisz na region gracza %owner%"
+  quit-message: "&7Wychodzisz z regionu gracza %owner%"
+  block-place: "&7Nie mozesz stawiac tutaj blokow"
+  block-break: "&7Nie mozesz rozwalac tutaj blokow"
+  interact: "&7Nie mozesz tego zrobic tutaj"
+
+plugin:
+  permission: "&cNie masz uprawien do tej komendy."
+  reloading: "&cPonowne ladowanie pluginu... moze zepsuc region uzytkownika lub spowodowac kilkusekundowe opoznienie, zalecamy /restart!"
+  reloaded: "&aPlugin zostal ponownie zaladowany!"
+
+region:
+  remove-member: "&aUsuneles gracza %user% z swojego regionu"
+  flag-modify: "&aFlag: &f%flag% &ajest: &f%value%"
+  add-member: "&aDodales gracza %user% do swojego regionu"
+  region-created: "&aPostawiles blok &b%block%&a, i utworzyłeś region"
+  region-removed: "&aRozwaliles blok %block%&a, i region zostal usuniety"
+  list-empty: "&cNie posiadasz regionu"
+  list-header: "&aRegiony [%size]:"
+  list-value: " &8- &7%id% - %location%"
+  error: "&cTe miejsce jest juz zajete znajdz inne"

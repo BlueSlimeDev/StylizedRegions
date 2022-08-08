@@ -10,6 +10,8 @@ import dev.mruniverse.slimelib.logs.SlimeLogs;
 import me.blueslime.stylizedregions.StylizedRegions;
 import me.blueslime.stylizedregions.SlimeFile;
 import me.blueslime.stylizedregions.commands.PluginCommand;
+import me.blueslime.stylizedregions.region.RegionLoader;
+import me.blueslime.stylizedregions.region.user.UserManager;
 import me.blueslime.stylizedregions.utils.FileUtilities;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,6 +20,10 @@ import java.io.File;
 public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
     private ConfigurationHandler messages = null;
+
+    private final RegionLoader regionLoader;
+
+    private final UserManager userManager;
 
     private final File langDirectory;
 
@@ -50,6 +56,10 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
         if (loadDefaults) {
             loadDefaults();
         }
+
+        regionLoader = new RegionLoader(plugin);
+
+        userManager = new UserManager(plugin);
 
         getCommands().register(new PluginCommand());
     }
@@ -89,14 +99,21 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
                 logs,
                 langDirectory,
                 "en.yml",
-                "/lang/messages/en.yml"
+                "/lang/en.yml"
         );
 
         FileUtilities.load(
                 logs,
                 langDirectory,
                 "es.yml",
-                "/lang/messages/es.yml"
+                "/lang/es.yml"
+        );
+
+        FileUtilities.load(
+                logs,
+                langDirectory,
+                "es.yml",
+                "/lang/pl.yml"
         );
 
         FileUtilities.load(
@@ -109,6 +126,14 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
     public ConfigurationHandler getMessages() {
         return messages;
+    }
+
+    public RegionLoader getRegionLoader() {
+        return regionLoader;
+    }
+
+    public UserManager getUserManager() {
+        return userManager;
     }
 
     public void shutdown() {

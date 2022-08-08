@@ -8,6 +8,8 @@ import dev.mruniverse.slimelib.logs.SlimeLogs;
 import me.blueslime.stylizedregions.exceptions.NotFoundLanguageException;
 import me.blueslime.stylizedregions.loader.PluginLoader;
 import me.blueslime.stylizedregions.loader.PluginLoaderDelay;
+import me.blueslime.stylizedregions.region.RegionLoader;
+import me.blueslime.stylizedregions.region.user.UserManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class StylizedRegions extends JavaPlugin implements SlimePlugin<JavaPlugin> {
@@ -37,6 +39,14 @@ public class StylizedRegions extends JavaPlugin implements SlimePlugin<JavaPlugi
                 this,
                 1L
         );
+    }
+
+    public RegionLoader getRegionLoader() {
+        return getLoader().getRegionLoader();
+    }
+
+    public UserManager getUsers() {
+        return getLoader().getUserManager();
     }
 
     public ConfigurationHandler getMessages() {
