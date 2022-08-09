@@ -115,6 +115,13 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
                 "es.yml",
                 "/lang/pl.yml"
         );
+
+        FileUtilities.load(
+                logs,
+                langDirectory,
+                "fa.yml",
+                "/lang/messages/fa.yml"
+        );
     }
 
     public ConfigurationHandler getMessages() {

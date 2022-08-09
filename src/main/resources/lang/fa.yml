@@ -1,0 +1,25 @@
+# If you want to disable a specified flag message by default, use "" in the message.
+default-region-flags:
+  join-message: "&7Aknon, Shoma Dar Mantagheye %owner% Hastid."
+  quit-message: "&7Aknon, Shoma Dar Mantagheye %owner% Nistid."
+  block-place: "&7Saheb In Mantaghe Ejazeye Place Kardan Block Nadade."
+  block-break: "&7Saheb In Mantaghe Ejazeye Break Kardan Block Nadade."
+  interact: "&7&7Saheb In Mantaghe Ejazeye Interact Kardan Dar In Mantaghe Ra Nadade."
+
+plugin:
+  permission: "&cYou don't have permissions for this action."
+  reloading: "&cReloading plugin... maybe it can break users region or cause lag for few seconds, we recommend the /restart!"
+  reloaded: "&aPlugin reloaded!"
+
+region:
+  remove-member: "&aAknon %user% Nemitavand Dar Mantagheye Shoma Build Konad."
+  flag-modify: "&aFlag: &f%flag% &ais: &f%value%"
+  add-member: "&aAknon %user% Mitavanad Dar Mantagheye Shoma Build Konad."
+  region-created: "&aShoma &b%block%&aGozashtid Va Mantagheye Jadid Ijad Kardid."
+  region-removed: "&aShoma &b%block%&aRa Kandid Va Aknon Mantaghe Remove Shode Ast."
+  list-empty: "&cShoma Hich Mantagheyi Nasakhtid."
+  list-header: "&aMantaghe(s) [%size]:"
+  list-value: " &8- &7%id% - %location%"
+  error: "&cDar Hale Hazer Inja Yek Mantaghe Hast."
+
+
