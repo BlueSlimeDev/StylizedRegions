@@ -1,0 +1,23 @@
+# フラグ時のメッセージを表示させたくない場合は "" のように記述してください。
+default-region-flags:
+  join-message: "&7%owner% が所有する土地に入りました"
+  quit-message: "&7%owner% が所有する土地から出ました"
+  block-place: "&7この土地の所有者はブロックの設置を許可していません"
+  block-break: "&7この土地の所有者はブロックの破壊を許可していません"
+  interact: "&7この土地の所有者は干渉できないようにしています"
+
+plugin:
+  permission: "&c権限がありません。"
+  reloading: "&cプラグインを再読み込みしています... 数秒間、プレイヤーの土地が無効になったりラグが発生する可能性があるので/restartを使うことをお勧めします！"
+  reloaded: "&aプラグインを再読み込みしました！"
+
+region:
+  remove-member: "&a%user% はあなたの土地で建築できなくなりました"
+  flag-modify: "&aフラグ： &f%flag% &a値： &f%value%"
+  add-member: "&a%user% はあなたの土地で建築できるようになりました"
+  region-created: "&b%block%を設置したため&a、新しい土地が作成されました！"
+  region-removed: "&b%block%を破壊したため&a、この土地が削除されました！"
+  list-empty: "&cまだあなたの土地は作成されていません"
+  list-header: "&a土地一覧 [%size]:"
+  list-value: " &8- &7%id% - %location%"
+  error: "&cこの場所はすでに誰かの土地であるため、作成することができません！"

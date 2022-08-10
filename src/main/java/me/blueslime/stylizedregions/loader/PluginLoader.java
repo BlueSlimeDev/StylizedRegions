@@ -6,7 +6,6 @@ import dev.mruniverse.slimelib.file.configuration.ConfigurationProvider;
 import dev.mruniverse.slimelib.file.configuration.provider.BukkitConfigurationProvider;
 import dev.mruniverse.slimelib.file.input.InputManager;
 import dev.mruniverse.slimelib.loader.BaseSlimeLoader;
-import dev.mruniverse.slimelib.logs.SlimeLogs;
 import me.blueslime.stylizedregions.StylizedRegions;
 import me.blueslime.stylizedregions.SlimeFile;
 import me.blueslime.stylizedregions.commands.PluginCommand;
@@ -93,34 +92,21 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
     }
 
     private void loadDefaults() {
-        SlimeLogs logs = getPlugin().getLogs();
+        loadLanguageFile("de");
+        loadLanguageFile("en");
+        loadLanguageFile("es");
+        loadLanguageFile("fa");
+        loadLanguageFile("fr");
+        loadLanguageFile("jp");
+        loadLanguageFile("pl");
+    }
 
+    private void loadLanguageFile(String name) {
         FileUtilities.load(
-                logs,
+                getPlugin().getLogs(),
                 langDirectory,
-                "en.yml",
-                "/lang/en.yml"
-        );
-
-        FileUtilities.load(
-                logs,
-                langDirectory,
-                "es.yml",
-                "/lang/es.yml"
-        );
-
-        FileUtilities.load(
-                logs,
-                langDirectory,
-                "es.yml",
-                "/lang/pl.yml"
-        );
-
-        FileUtilities.load(
-                logs,
-                langDirectory,
-                "fa.yml",
-                "/lang/messages/fa.yml"
+                name + ".yml",
+                "/lang/" + name + ".yml"
         );
     }
 

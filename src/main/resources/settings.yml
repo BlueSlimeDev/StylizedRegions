@@ -1,5 +1,5 @@
 settings:
-  # Default Languages: en, es, pl
+  # Default Languages: en, es, pl, fa, fr, jp, de
   default-lang: en
   # Disable this option with -1
   max-region-per-player: 5
