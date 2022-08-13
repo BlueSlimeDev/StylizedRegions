@@ -10,6 +10,7 @@ import me.blueslime.stylizedregions.loader.PluginLoader;
 import me.blueslime.stylizedregions.loader.PluginLoaderDelay;
 import me.blueslime.stylizedregions.region.RegionLoader;
 import me.blueslime.stylizedregions.region.user.UserManager;
+import me.blueslime.stylizedregions.runnable.PlayerRegionRunnable;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class StylizedRegions extends JavaPlugin implements SlimePlugin<JavaPlugin> {
@@ -68,10 +69,16 @@ public class StylizedRegions extends JavaPlugin implements SlimePlugin<JavaPlugi
         return information;
     }
 
+    public PlayerRegionRunnable getRunnable() {
+        return getLoader().getRunnable();
+    }
+
     @Override
     public PluginLoader getLoader() {
         return loader;
     }
+
+
 
     @Override
     public SlimeLogs getLogs() {

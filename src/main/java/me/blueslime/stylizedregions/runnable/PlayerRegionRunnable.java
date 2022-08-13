@@ -58,12 +58,12 @@ public class PlayerRegionRunnable extends BukkitRunnable {
             if (!isIn && user.getCurrentRegion().equals(region.getId())) {
                 user.setCurrentRegion("");
                 region.send(false, user.getPlayer());
+                continue;
             }
 
             if (isIn && !user.getCurrentRegion().equals(region.getId())) {
                 user.setCurrentRegion(region.getId());
                 region.send(true, user.getPlayer());
-                continue;
             }
         }
     }

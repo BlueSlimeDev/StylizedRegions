@@ -11,6 +11,7 @@ import me.blueslime.stylizedregions.SlimeFile;
 import me.blueslime.stylizedregions.commands.PluginCommand;
 import me.blueslime.stylizedregions.region.RegionLoader;
 import me.blueslime.stylizedregions.region.user.UserManager;
+import me.blueslime.stylizedregions.runnable.PlayerRegionRunnable;
 import me.blueslime.stylizedregions.utils.FileUtilities;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,7 +23,11 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
     private final RegionLoader regionLoader;
 
+    private final StylizedRegions stylized;
+
     private final UserManager userManager;
+
+    private PlayerRegionRunnable runnable;
 
     private final File langDirectory;
 
@@ -39,6 +44,8 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
                         )
                 )
         );
+
+        stylized = plugin;
 
         langDirectory = new File(
                 plugin.getDataFolder(),
@@ -60,7 +67,7 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
         userManager = new UserManager(plugin);
 
-        getCommands().register(new PluginCommand());
+        getCommands().register(new PluginCommand(plugin));
     }
 
     public void init() {
@@ -89,6 +96,8 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
                 getPlugin().getLogs().debug("Language name file of messages: " + messages.getName());
             }
         }
+
+        runnable = new PlayerRegionRunnable(stylized);
     }
 
     private void loadDefaults() {
@@ -120,6 +129,10 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
     public UserManager getUserManager() {
         return userManager;
+    }
+
+    public PlayerRegionRunnable getRunnable() {
+        return runnable;
     }
 
     public void shutdown() {

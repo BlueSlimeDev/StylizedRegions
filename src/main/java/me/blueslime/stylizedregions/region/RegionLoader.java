@@ -12,10 +12,13 @@ import org.bukkit.Location;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class RegionLoader {
 
     private final JsonController<String, Map<String, String>> region;
+
+    private final Map<String, Region> regionMap = new ConcurrentHashMap<>();
 
     private final List<Region> regionList = new ArrayList<>();
 
@@ -79,7 +82,15 @@ public class RegionLoader {
         regionList.add(
                 region
         );
+        regionMap.put(
+                region.getId(),
+                region
+        );
         return true;
+    }
+
+    public Region fetchRegion(String id) {
+        return regionMap.get(id);
     }
 
     public Map<String, Map<String, String>> getMap() {
