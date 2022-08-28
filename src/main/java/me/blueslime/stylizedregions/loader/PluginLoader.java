@@ -1,10 +1,8 @@
 package me.blueslime.stylizedregions.loader;
 
-import dev.mruniverse.slimelib.SlimeStorage;
 import dev.mruniverse.slimelib.file.configuration.ConfigurationHandler;
 import dev.mruniverse.slimelib.file.configuration.ConfigurationProvider;
 import dev.mruniverse.slimelib.file.configuration.provider.BukkitConfigurationProvider;
-import dev.mruniverse.slimelib.file.input.InputManager;
 import dev.mruniverse.slimelib.loader.BaseSlimeLoader;
 import me.blueslime.stylizedregions.StylizedRegions;
 import me.blueslime.stylizedregions.SlimeFile;
@@ -33,17 +31,6 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
 
     public PluginLoader(StylizedRegions plugin) {
         super(plugin);
-
-        super.storage(
-                new SlimeStorage(
-                        plugin.getServerType(),
-                        plugin.getLogs(),
-                        InputManager.createInputManager(
-                                plugin.getServerType(),
-                                plugin.getPlugin()
-                        )
-                )
-        );
 
         stylized = plugin;
 
@@ -89,7 +76,7 @@ public class PluginLoader extends BaseSlimeLoader<JavaPlugin> {
                         messages
                 );
 
-                getPlugin().getLogs().info("Scoreboards and Messages are loaded from Lang files successfully.");
+                getPlugin().getLogs().info("Messages are loaded from Lang file successfully.");
             } else {
                 getPlugin().getLogs().error("Can't load scoreboards and messages correctly, debug will be showed after this message:");
                 getPlugin().getLogs().debug("Language file of messages: " + messages.getAbsolutePath());
