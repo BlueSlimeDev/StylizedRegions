@@ -1,7 +1,7 @@
-<div style="text-align:center">
+<p align="center">
     <img src="https://i.imgur.com/U1szhnr.gif" width="250px">
     <img src="https://i.imgur.com/u0FtKgB.png" width="600px">
-</div>
+</p>
 
 # ¿Why should I use Stylized Regions?
 
@@ -11,8 +11,6 @@ for a better performance for your server.
 ```
 
 # FEATURES
-
----
 
 * Block Damage Prevention from: **Creeper** and **Wither Block Damage**, **Falling Damage**, **Fire Spread** and more!
 * Flags System
@@ -28,8 +26,6 @@ for a better performance for your server.
 
 # COMPILATION
 
----
-
 This project was created using **[Maven](https://maven.apache.org/)**, This project supports starts from Java 8, You only need to run this next command:
 ```mvn
 mvn package
@@ -37,12 +33,10 @@ mvn package
 And done! Your file will be available at: `${project.dir}/target/`
 
 # DOWNLOAD
-___
 
 Currently using **[Github Actions](https://github.com/BlueSlimeDev/StylizedRegions/actions)** for Dev Builds and Releases Sections.
 
 
 # DOCUMENTATION
 
-___
 You can find more data about how this works in the future here.
