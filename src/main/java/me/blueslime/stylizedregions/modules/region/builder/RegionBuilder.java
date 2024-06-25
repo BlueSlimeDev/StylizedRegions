@@ -13,9 +13,12 @@ public class RegionBuilder {
         );
     }
 
-    public static Cuboid build(Location location, int ahead, int behind, int right, int left, int maxY, int minY) {
-        Location pos1 = calculatePosition(location, true, ahead, right, maxY);
-        Location pos2 = calculatePosition(location, false, behind, left, minY);
+    public static Cuboid build(Location location, int ahead, int behind, int right, int left, int maxY, int minY, int expand) {
+        if (location.getWorld() == null) {
+            return null;
+        }
+        Location pos1 = calculatePosition(location, true, ahead + expand, right + expand, maxY);
+        Location pos2 = calculatePosition(location, false, behind + expand, left + expand, minY);
         return new Cuboid(
             pos1,
             pos2
@@ -36,7 +39,8 @@ public class RegionBuilder {
             right,
             left,
             maxY,
-            minY
+            minY,
+            0
         );
     }
 

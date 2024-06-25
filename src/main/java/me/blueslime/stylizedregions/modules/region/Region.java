@@ -1,23 +1,31 @@
 package me.blueslime.stylizedregions.modules.region;
 
-import me.blueslime.bukkitmeteor.libs.messagehandler.types.titles.TitlesHandler;
-import me.blueslime.bukkitmeteor.libs.utilitiesapi.text.TextUtilities;
-import me.blueslime.stylizedregions.modules.region.flags.Flags;
+import me.blueslime.bukkitmeteor.implementation.Implements;
+import me.blueslime.stylizedregions.StylizedRegions;
+import me.blueslime.stylizedregions.modules.flags.Flags;
+import me.blueslime.stylizedregions.modules.region.block.RegionBlock;
+import me.blueslime.stylizedregions.modules.region.user.RegionUser;
+import me.blueslime.stylizedregions.service.region.RegionBlockService;
 import me.blueslime.stylizedregions.utils.cuboid.Cuboid;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.io.File;
 import java.util.UUID;
 
 public class Region {
     private final FileConfiguration configuration;
+    private final File regionFile;
     private final String name;
     private final UUID uuid;
     private final String id;
     private Cuboid region;
 
-    public Region(FileConfiguration configuration, String id, String uuid, String name, Cuboid cuboid) {
+    public Region(FileConfiguration configuration, File regionFile, String id, String uuid, String name, Cuboid cuboid) {
         this.configuration = configuration;
+        this.regionFile = regionFile;
         this.region = cuboid;
         this.uuid   = UUID.fromString(uuid);
         this.name   = name;
@@ -30,6 +38,10 @@ public class Region {
      */
     public void replaceRegion(Cuboid cuboid) {
         this.region = cuboid;
+    }
+
+    public boolean isOwner(Player player) {
+        return uuid == player.getUniqueId();
     }
 
     /**
@@ -52,39 +64,24 @@ public class Region {
         return id;
     }
 
-    public void send(boolean isJoining, Player player) {
-        Flags flag;
-        Flags secondFlag;
-        if (isJoining) {
-            flag = Flags.JOIN_MESSAGE;
-            secondFlag = Flags.JOIN_TITLE;
-        } else {
-            flag = Flags.QUIT_MESSAGE;
-            secondFlag = Flags.QUIT_TITLE;
-        }
+    public void addTrusted(Player player) {
+        //TODO: Add this one
+    }
 
-        player.sendMessage(
-            TextUtilities.colorize(
-                configuration.getString(
-                    flag.toPath(),
-                    flag.getDefault(
-                        flag.toPath()
-                    ).toString()
-                )
-            )
-        );
+    public boolean isTrusted(Player player) {
+        return configuration.getStringList("trusted-users").contains(player.getUniqueId().toString());
+    }
 
-        String title = configuration.getString(
-                secondFlag.toPath(),
-                secondFlag.getDefault(
-                        secondFlag.toPath()
-                ).toString()
-        );
+    public boolean isTrusted(RegionUser player) {
+        return configuration.getStringList("trusted-users").contains(player.getUniqueId().toString());
+    }
 
-        TitlesHandler.sendTitle(
-            player,
-            TextUtilities.colorize(title)
-        );
+    public boolean hasAdminPermissions(RegionUser player) {
+        return configuration.getStringList("admin-users").contains(player.getUniqueId().toString());
+    }
+
+    public boolean hasAdminPermissions(Player player) {
+        return configuration.getStringList("admin-users").contains(player.getUniqueId().toString());
     }
 
     /**
@@ -95,4 +92,85 @@ public class Region {
         return region;
     }
 
+    public File getFile() {
+        return regionFile;
+    }
+
+    /**
+     * gets the region block of this region
+     * @return region protection block
+     */
+    public RegionBlock getRegionBlock() {
+        return Implements.fetch(RegionBlockService.class).fetchRegionBlock(
+            configuration.getString("region-block", "")
+        );
+    }
+
+    /**
+     * Set the flag data in the configuration file of the flag
+     * @param flagId identifier
+     * @param value flag value
+     */
+    public void setFlag(String flagId, Object value) {
+        configuration.set("flags." + flagId, value);
+        Implements.fetch(StylizedRegions.class).save(configuration, regionFile, "region-template.yml");
+    }
+
+    /**
+     * This is user for the user request to add a flag to the current region, if you are a developer
+     * Please use the setFlag, this is normally used with the setFlag command.
+     * @param parameter data
+     */
+    public void addFlag(Player player, String parameter) {
+        Implements.fetch(Flags.class).execute(
+            this,
+            player,
+            parameter,
+            false
+        );
+    }
+
+    /**
+     * Save region in console
+     */
+    public void save() {
+        Implements.fetch(StylizedRegions.class).save(configuration, regionFile, "region-template.yml");
+    }
+
+    /**
+     * Gets a flag from this region
+     * @param flagId identifier of this flag
+     * @param defaultValue flag value
+     * @return result
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T getFlag(String flagId, T defaultValue) {
+        Object result = configuration.get("flags." + flagId);
+        if (result != null) {
+            return (T) result;
+        }
+        return (T) getRegionBlock().getConfiguration().get("flags." + flagId, defaultValue);
+    }
+
+    /**
+     * Checks if something is in the region
+     * @param entity to check
+     * @return result
+     */
+    public boolean isIn(Entity entity) {
+        return region.isIn(entity.getLocation());
+    }
+
+    /**
+     * Checks if something is in the region
+     * @param location to check
+     * @return result
+     */
+    public boolean isIn(Location location) {
+        return region.isIn(location);
+    }
+
+    public Player getBukkitOwner() {
+        return Implements.fetch(StylizedRegions.class).getServer().getPlayer(uuid);
+    }
 }

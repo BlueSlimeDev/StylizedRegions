@@ -1,0 +1,14 @@
+# Owner Data
+owner-uuid: NONE
+owner-name: NONE
+# Block Position
+block-position:
+  world: NONE
+  x: 0
+  y: 0
+  z: 0
+# Region Data
+region-block: NONE
+expand-area: 0
+# Flag Data
+flags: {}

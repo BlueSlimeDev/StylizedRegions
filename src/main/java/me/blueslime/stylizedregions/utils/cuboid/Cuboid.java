@@ -6,7 +6,7 @@ import java.util.Iterator;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.Entity;
 
 public class Cuboid {
 
@@ -99,8 +99,8 @@ public class Cuboid {
                 .getBlockZ() >= this.zMin && loc.getBlockZ() <= this.zMax;
     }
 
-    public boolean isIn(final Player player) {
-        return this.isIn(player.getLocation());
+    public boolean isIn(final Entity entity) {
+        return this.isIn(entity.getLocation());
     }
 
     public boolean isInWithMarge(final Location loc, final double marge) {

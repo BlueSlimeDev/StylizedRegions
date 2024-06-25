@@ -12,6 +12,7 @@ plugin:
   reloaded: "&aPlugin reloaded!"
 
 region:
+  wrong-flag-usage: "&cWrong usage, please use something like: <flag_usage>, your value is not valid, your usage was: <param>, value is not accepted."
   remove-member: "&aAknon %user% Nemitavand Dar Mantagheye Shoma Build Konad."
   flag-modify: "&aFlag: &f%flag% &ais: &f%value%"
   add-member: "&aAknon %user% Mitavanad Dar Mantagheye Shoma Build Konad."

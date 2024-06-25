@@ -13,6 +13,7 @@ plugin:
   reloaded: "&aPlugin zostal ponownie zaladowany!"
 
 region:
+  wrong-flag-usage: "&cWrong usage, please use something like: <flag_usage>, your value is not valid, your usage was: <param>, value is not accepted."
   remove-member: "&aUsuneles gracza %user% z swojego regionu"
   flag-modify: "&aFlag: &f%flag% &ajest: &f%value%"
   add-member: "&aDodales gracza %user% do swojego regionu"

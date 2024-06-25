@@ -40,3 +40,10 @@ Currently using **[Github Actions](https://github.com/BlueSlimeDev/StylizedRegio
 # DOCUMENTATION
 
 You can find more data about how this works in the future here.
+
+# PENDING LIST:
+
+* Finish all default flags
+* Region create event
+* Region delete event
+* Commands

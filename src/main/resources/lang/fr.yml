@@ -12,6 +12,7 @@ plugin:
   reloaded: "&aPlugin rechargé!"
 
 region:
+  wrong-flag-usage: "&cWrong usage, please use something like: <flag_usage>, your value is not valid, your usage was: <param>, value is not accepted."
   remove-member: "&a%user% ne pourra plus construire ici à partir de maintenant"
   flag-modify: "&aDrapeau: &f%flag% &ais: &f%value%"
   add-member: "&a%user% pourra maintenant construire ici"

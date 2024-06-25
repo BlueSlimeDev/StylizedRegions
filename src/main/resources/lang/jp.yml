@@ -12,6 +12,7 @@ plugin:
   reloaded: "&aプラグインを再読み込みしました！"
 
 region:
+  wrong-flag-usage: "&cWrong usage, please use something like: <flag_usage>, your value is not valid, your usage was: <param>, value is not accepted."
   remove-member: "&a%user% はあなたの土地で建築できなくなりました"
   flag-modify: "&aフラグ： &f%flag% &a値： &f%value%"
   add-member: "&a%user% はあなたの土地で建築できるようになりました"

@@ -3,6 +3,7 @@ package me.blueslime.stylizedregions.service.getter;
 import me.blueslime.bukkitmeteor.implementation.module.Module;
 import me.blueslime.bukkitmeteor.implementation.registered.Register;
 import me.blueslime.stylizedregions.StylizedRegions;
+import me.blueslime.stylizedregions.service.region.RegionBlockService;
 import me.blueslime.stylizedregions.service.region.RegionService;
 import me.blueslime.stylizedregions.service.users.UserService;
 
@@ -32,8 +33,13 @@ public class MeteorGetter implements Module {
     }
 
     @Register
+    public RegionBlockService provideRegionBlockService() {
+        return new RegionBlockService();
+    }
+
+    @Register
     public RegionService provideRegionService() {
-        return new RegionService(plugin);
+        return new RegionService();
     }
 }
 
