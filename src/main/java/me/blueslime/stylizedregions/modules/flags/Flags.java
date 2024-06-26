@@ -12,6 +12,7 @@ import me.blueslime.stylizedregions.modules.flags.list.block.burn.BlockBurnFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.ignite.BlockIgniteFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.physics.BlockPhysicsFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.place.BlockPlaceFlag;
+import me.blueslime.stylizedregions.modules.flags.list.block.spread.BlockSpreadFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.farewell.ChatFarewellFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.greeting.ChatGreetingFlag;
 import me.blueslime.stylizedregions.modules.region.Region;
@@ -34,6 +35,7 @@ public class Flags implements Module {
             new BlockIgniteFlag(),
             new BlockBurnFlag(),
             new BlockPhysicsFlag(),
+            new BlockSpreadFlag(),
             new ChatFarewellFlag(),
             new ChatGreetingFlag()
         );
