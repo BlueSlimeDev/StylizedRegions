@@ -1,16 +1,16 @@
-package me.blueslime.stylizedregions.modules.flags.list.block.explode;
+package me.blueslime.stylizedregions.modules.flags.list.block.fade;
 
 import me.blueslime.bukkitmeteor.BukkitMeteorPlugin;
 import me.blueslime.stylizedregions.modules.flags.flag.Flag;
-import me.blueslime.stylizedregions.modules.flags.list.block.explode.listener.BlockExplodeListener;
+import me.blueslime.stylizedregions.modules.flags.list.block.fade.listener.BlockFadeListener;
 import me.blueslime.stylizedregions.modules.region.Region;
 import me.blueslime.stylizedregions.utils.region.RegionUtil;
 import org.bukkit.entity.Player;
 
-public class BlockExplodeFlag extends Flag {
-    public BlockExplodeFlag() {
-        super("block-explode", "block-explode:", "<block-explode>");
-        registerListeners(new BlockExplodeListener());
+public class BlockFadeFlag extends Flag {
+    public BlockFadeFlag() {
+        super("block-fade", "block-fade:", "<block-fade>");
+        registerListeners(new BlockFadeListener());
     }
     /**
      * Execute action
@@ -21,7 +21,7 @@ public class BlockExplodeFlag extends Flag {
      */
     @Override
     public void execute(BukkitMeteorPlugin plugin, String parameter, Region region, Player player) {
-        region.setFlag("block-explode", Boolean.parseBoolean(parameter));
+        region.setFlag("block-fade", Boolean.parseBoolean(parameter));
     }
 
     /**
@@ -37,7 +37,7 @@ public class BlockExplodeFlag extends Flag {
 
     @Override
     public String getIdentifier() {
-        return "block-explode";
+        return "block-fade";
     }
 
     /**
@@ -47,6 +47,6 @@ public class BlockExplodeFlag extends Flag {
      */
     @Override
     public String getExampleUsage() {
-        return "block-explode true";
+        return "block-fade true";
     }
 }
