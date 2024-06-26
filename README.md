@@ -47,3 +47,13 @@ You can find more data about how this works in the future here.
 * Region create event
 * Region delete event
 * Commands
+
+# WORKING LIST:
+
+Default Flags
+* ~~BLOCK  FLAGS~~
+* ENTITY FLAGS
+* PLAYER FLAGS
+* SERVER FLAGS
+* WEATHER FLAGS
+* VEHICLE FLAGS
