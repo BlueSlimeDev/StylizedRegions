@@ -12,6 +12,7 @@ import me.blueslime.stylizedregions.modules.flags.list.block.burn.BlockBurnFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.explode.BlockExplodeFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.fade.BlockFadeFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.form.BlockFormFlag;
+import me.blueslime.stylizedregions.modules.flags.list.block.grow.BlockGrowFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.ignite.BlockIgniteFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.physics.BlockPhysicsFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.place.BlockPlaceFlag;
@@ -39,6 +40,7 @@ public class Flags implements Module {
             new BlockBurnFlag(),
             new BlockExplodeFlag(),
             new BlockFadeFlag(),
+            new BlockGrowFlag(),
             new BlockPhysicsFlag(),
             new BlockSpreadFlag(),
             new BlockFormFlag(),
