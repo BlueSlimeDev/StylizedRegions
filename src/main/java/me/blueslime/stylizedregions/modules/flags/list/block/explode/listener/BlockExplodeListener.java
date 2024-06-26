@@ -1,17 +1,16 @@
-package me.blueslime.stylizedregions.modules.flags.list.block.breaks.listener;
+package me.blueslime.stylizedregions.modules.flags.list.block.explode.listener;
 
 import me.blueslime.stylizedregions.modules.region.Region;
 import me.blueslime.stylizedregions.utils.region.RegionUtil;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockExplodeEvent;
 
 import java.util.Optional;
 
-public class BlockBreakListener implements Listener {
-
+public class BlockExplodeListener implements Listener {
     @EventHandler
-    public void on(BlockBreakEvent event) {
+    public void on(BlockExplodeEvent event) {
         Optional<Region> regionOptional = RegionUtil.getRegionAt(event.getBlock().getLocation());
 
         if (!regionOptional.isPresent()) {
@@ -20,20 +19,14 @@ public class BlockBreakListener implements Listener {
 
         Region region = regionOptional.get();
 
-        boolean canBreak = region.getFlag(
-            "block-break",
-            false
+        boolean canExplode = region.getFlag(
+            "block-explode",
+            true
         );
 
-        if (!canBreak) {
-            canBreak = region.isTrusted(event.getPlayer()) || region.isOwner(event.getPlayer());
-        }
-
-        if (canBreak) {
+        if (canExplode) {
             return;
         }
-
         event.setCancelled(true);
     }
-
 }
