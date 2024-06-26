@@ -8,6 +8,7 @@ import me.blueslime.bukkitmeteor.libs.utilitiesapi.text.TextReplacer;
 import me.blueslime.bukkitmeteor.utils.list.ReturnableArrayList;
 import me.blueslime.stylizedregions.modules.flags.flag.Flag;
 import me.blueslime.stylizedregions.modules.flags.list.block.breaks.BlockBreakFlag;
+import me.blueslime.stylizedregions.modules.flags.list.block.burn.BlockBurnFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.ignite.BlockIgniteFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.place.BlockPlaceFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.farewell.ChatFarewellFlag;
@@ -30,6 +31,7 @@ public class Flags implements Module {
             new BlockPlaceFlag(),
             new BlockBreakFlag(),
             new BlockIgniteFlag(),
+            new BlockBurnFlag(),
             new ChatFarewellFlag(),
             new ChatGreetingFlag()
         );
