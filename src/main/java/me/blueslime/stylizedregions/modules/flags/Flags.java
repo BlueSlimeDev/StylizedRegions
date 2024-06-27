@@ -18,6 +18,9 @@ import me.blueslime.stylizedregions.modules.flags.list.block.leaves.BlockLeavesD
 import me.blueslime.stylizedregions.modules.flags.list.block.physics.BlockPhysicsFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.place.BlockPlaceFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.spread.BlockSpreadFlag;
+import me.blueslime.stylizedregions.modules.flags.list.entity.interact.CreatureCropTramplingFlag;
+import me.blueslime.stylizedregions.modules.flags.list.entity.interact.SnifferEggTramplingFlag;
+import me.blueslime.stylizedregions.modules.flags.list.entity.interact.TurtleEggTramplingFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.farewell.ChatFarewellFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.greeting.ChatGreetingFlag;
 import me.blueslime.stylizedregions.modules.region.Region;
@@ -35,6 +38,7 @@ public class Flags implements Module {
     public Flags(BukkitMeteorPlugin plugin) {
         this.plugin = plugin;
         registerInternalFlag(
+            // BLOCK FLAGS
             new BlockPlaceFlag(),
             new BlockBreakFlag(),
             new BlockIgniteFlag(),
@@ -46,6 +50,11 @@ public class Flags implements Module {
             new BlockPhysicsFlag(),
             new BlockSpreadFlag(),
             new BlockFormFlag(),
+            // ENTITIES FLAGS
+            new CreatureCropTramplingFlag(),
+            new SnifferEggTramplingFlag(),
+            new TurtleEggTramplingFlag(),
+            // EXTRAS FLAGS
             new ChatFarewellFlag(),
             new ChatGreetingFlag()
         );

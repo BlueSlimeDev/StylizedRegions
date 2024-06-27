@@ -2,6 +2,7 @@ package me.blueslime.stylizedregions.modules.flags.flag;
 
 import me.blueslime.bukkitmeteor.BukkitMeteorPlugin;
 import me.blueslime.bukkitmeteor.implementation.Implements;
+import me.blueslime.bukkitmeteor.implementation.module.Module;
 import me.blueslime.stylizedregions.StylizedRegions;
 import me.blueslime.stylizedregions.modules.region.Region;
 import org.bukkit.entity.Player;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public abstract class Flag {
+public abstract class Flag implements Module {
     private final List<Listener> listeners = new ArrayList<>();
     private final List<String> prefixes = new ArrayList<>();
 
