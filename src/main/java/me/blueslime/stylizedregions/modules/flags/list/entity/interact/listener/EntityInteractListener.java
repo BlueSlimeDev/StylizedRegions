@@ -1,4 +1,4 @@
-package me.blueslime.stylizedregions.modules.flags.list.entity.interact.listeners;
+package me.blueslime.stylizedregions.modules.flags.list.entity.interact.listener;
 
 import me.blueslime.stylizedregions.modules.region.Region;
 import me.blueslime.stylizedregions.utils.region.RegionUtil;

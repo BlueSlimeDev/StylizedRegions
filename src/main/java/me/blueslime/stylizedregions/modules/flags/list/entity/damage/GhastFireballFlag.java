@@ -1,16 +1,16 @@
-package me.blueslime.stylizedregions.modules.flags.list.entity.interact;
+package me.blueslime.stylizedregions.modules.flags.list.entity.damage;
 
 import me.blueslime.bukkitmeteor.BukkitMeteorPlugin;
 import me.blueslime.stylizedregions.modules.flags.flag.Flag;
-import me.blueslime.stylizedregions.modules.flags.list.entity.interact.listener.EntityInteractListener;
+import me.blueslime.stylizedregions.modules.flags.list.entity.damage.listener.EntityDamageListener;
 import me.blueslime.stylizedregions.modules.region.Region;
 import me.blueslime.stylizedregions.utils.region.RegionUtil;
 import org.bukkit.entity.Player;
 
-public class CreatureCropTramplingFlag extends Flag {
-    public CreatureCropTramplingFlag() {
-        super("crop-trampling", "crop-tramp", "<crop-trampling>", "crop-trampling:");
-        registerListeners(new EntityInteractListener());
+public class GhastFireballFlag extends Flag {
+    public GhastFireballFlag() {
+        super("ghast-fireball", "fireball", "<ghast-fireball>", "ghast-fireball:");
+        registerListeners(new EntityDamageListener());
     }
 
     /**
@@ -22,7 +22,7 @@ public class CreatureCropTramplingFlag extends Flag {
      */
     @Override
     public void execute(BukkitMeteorPlugin plugin, String parameter, Region region, Player player) {
-        region.setFlag("crop-tramp", Boolean.parseBoolean(parameter));
+        region.setFlag("ghast-fireball", Boolean.parseBoolean(parameter));
     }
 
     /**
@@ -38,7 +38,7 @@ public class CreatureCropTramplingFlag extends Flag {
 
     @Override
     public String getIdentifier() {
-        return "crop-tramp";
+        return "ghast-fireball";
     }
 
     /**
@@ -48,6 +48,6 @@ public class CreatureCropTramplingFlag extends Flag {
      */
     @Override
     public String getExampleUsage() {
-        return "crop-tramp true";
+        return "ghast-fireball true";
     }
 }

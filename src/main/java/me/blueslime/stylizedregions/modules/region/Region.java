@@ -1,6 +1,7 @@
 package me.blueslime.stylizedregions.modules.region;
 
 import me.blueslime.bukkitmeteor.implementation.Implements;
+import me.blueslime.bukkitmeteor.utils.PluginConsumer;
 import me.blueslime.stylizedregions.StylizedRegions;
 import me.blueslime.stylizedregions.modules.flags.Flags;
 import me.blueslime.stylizedregions.modules.region.block.RegionBlock;
@@ -150,6 +151,25 @@ public class Region {
             return (T) result;
         }
         return (T) getRegionBlock().getConfiguration().get("flags." + flagId, defaultValue);
+    }
+
+    /**
+     * Gets a flag from this region
+     * @param flagId identifier of this flag
+     * @param defaultValue flag value
+     * @return result
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T getFlag(String flagId, T defaultValue, PluginConsumer.PluginExecutableConsumer<T> consumer) {
+        T result = consumer.accept();
+        if (result != null) {
+            return result;
+        }
+        return (T) getRegionBlock().getConfiguration().get("flags." + flagId, defaultValue);
+    }
+
+    public FileConfiguration getConfiguration() {
+        return configuration;
     }
 
     /**

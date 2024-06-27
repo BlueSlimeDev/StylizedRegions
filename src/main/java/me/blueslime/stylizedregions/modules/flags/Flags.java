@@ -18,6 +18,7 @@ import me.blueslime.stylizedregions.modules.flags.list.block.leaves.BlockLeavesD
 import me.blueslime.stylizedregions.modules.flags.list.block.physics.BlockPhysicsFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.place.BlockPlaceFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.spread.BlockSpreadFlag;
+import me.blueslime.stylizedregions.modules.flags.list.entity.damage.*;
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.CreatureCropTramplingFlag;
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.SnifferEggTramplingFlag;
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.TurtleEggTramplingFlag;
@@ -54,6 +55,12 @@ public class Flags implements Module {
             new CreatureCropTramplingFlag(),
             new SnifferEggTramplingFlag(),
             new TurtleEggTramplingFlag(),
+            new GhastFireballFlag(),
+            new ItemFrameDestroyFlag(),
+            new MobDamageFlag(),
+            new OtherExplosionFlag(),
+            new WaterBreathingFlag(),
+            new WolfDumbnessFlag(),
             // EXTRAS FLAGS
             new ChatFarewellFlag(),
             new ChatGreetingFlag()
