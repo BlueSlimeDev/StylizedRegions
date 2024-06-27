@@ -19,6 +19,8 @@ import me.blueslime.stylizedregions.modules.flags.list.block.physics.BlockPhysic
 import me.blueslime.stylizedregions.modules.flags.list.block.place.BlockPlaceFlag;
 import me.blueslime.stylizedregions.modules.flags.list.block.spread.BlockSpreadFlag;
 import me.blueslime.stylizedregions.modules.flags.list.entity.damage.*;
+import me.blueslime.stylizedregions.modules.flags.list.entity.hanging.EntityItemFrameDestroyFlag;
+import me.blueslime.stylizedregions.modules.flags.list.entity.hanging.EntityPaintingDestroyFlag;
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.CreatureCropTramplingFlag;
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.SnifferEggTramplingFlag;
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.TurtleEggTramplingFlag;
@@ -61,6 +63,8 @@ public class Flags implements Module {
             new OtherExplosionFlag(),
             new WaterBreathingFlag(),
             new WolfDumbnessFlag(),
+            new EntityItemFrameDestroyFlag(),
+            new EntityPaintingDestroyFlag(),
             // EXTRAS FLAGS
             new ChatFarewellFlag(),
             new ChatGreetingFlag()
