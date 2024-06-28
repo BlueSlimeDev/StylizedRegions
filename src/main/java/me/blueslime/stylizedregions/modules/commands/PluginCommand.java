@@ -10,9 +10,12 @@ import me.blueslime.stylizedregions.modules.region.user.RegionUser;
 import me.blueslime.stylizedregions.service.region.RegionService;
 import me.blueslime.stylizedregions.service.users.UserService;
 import me.blueslime.stylizedregions.utils.location.LocationSerializer;
+import me.blueslime.stylizedregions.utils.region.RegionUtil;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+
+import java.util.Optional;
 
 public class PluginCommand extends SimpleCommand<StylizedRegions> {
 
@@ -84,12 +87,26 @@ public class PluginCommand extends SimpleCommand<StylizedRegions> {
                 return;
             case "info":
                 if (user.getCurrentRegion() != null && !user.getCurrentRegion().isEmpty()) {
-                    Region region = Implements.fetch(RegionService.class).fetchRegion(user.getCurrentRegion());
+                    Optional<Region> regionOptional = RegionUtil.getRegionAt(player.getLocation());
+                    if (regionOptional.isPresent()) {
+                        Region region =  regionOptional.get();
+
+                        if (region.isOwner(player) || region.isTrusted(player) || player.hasPermission("stylizedregions.bypass")) {
+                            //TODO: info message
+                            sender.send("&3INFO MESSAGE");
+                            return;
+                        }
+                        sender.send("&cOnly region members can do this");
+                        return;
+                    }
                     sender.send(
-                        "&eRegion owner: " + region.getOwner(),
-                        "&eRegion id: " + region.getId()
+                        "&cNot in a region"
                     );
                 }
+                return;
+            case "give":
+                //TODO: give argument.
+                sender.send("&cGive Command");
                 return;
             case "reload":
                 Implements.fetch(StylizedRegions.class).reload();

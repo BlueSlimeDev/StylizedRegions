@@ -1,7 +1,7 @@
-# This is the name for the region
+# This is the name for the block
 name: "&a&l25x25"
-# Warning: the id need to be different for all regions!
-region-id: "ps25"
+# Warning: the id need to be different for all blocks!
+block-id: "ps25"
 # This will be the item to be placed to create a region
 block: "GOLDEN_ORE"
 # Size modifier:
