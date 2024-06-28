@@ -75,6 +75,10 @@ public abstract class Flag implements Module {
 
     public abstract String getIdentifier();
 
+    public String getFlagPath() {
+        return "flags." + getIdentifier();
+    }
+
     public boolean isThisFlag(String parameter) {
         if (parameter == null) {
             return false;

@@ -26,6 +26,13 @@ import me.blueslime.stylizedregions.modules.flags.list.entity.interact.SnifferEg
 import me.blueslime.stylizedregions.modules.flags.list.entity.interact.TurtleEggTramplingFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.farewell.ChatFarewellFlag;
 import me.blueslime.stylizedregions.modules.flags.list.extras.greeting.ChatGreetingFlag;
+import me.blueslime.stylizedregions.modules.flags.list.extras.teleport.DenyChorusFruitFlag;
+import me.blueslime.stylizedregions.modules.flags.list.extras.teleport.DenyEnderPearlFlag;
+import me.blueslime.stylizedregions.modules.flags.list.extras.teleport.DenyTeleportFlag;
+import me.blueslime.stylizedregions.modules.flags.list.player.respawn.SpawnLocationFlag;
+import me.blueslime.stylizedregions.modules.flags.list.player.teleport.JoinUsingChorusFruitFlag;
+import me.blueslime.stylizedregions.modules.flags.list.player.teleport.JoinUsingEnderPearlFlag;
+import me.blueslime.stylizedregions.modules.flags.list.player.teleport.TeleportFlag;
 import me.blueslime.stylizedregions.modules.region.Region;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -65,9 +72,17 @@ public class Flags implements Module {
             new WolfDumbnessFlag(),
             new EntityItemFrameDestroyFlag(),
             new EntityPaintingDestroyFlag(),
+            // PLAYER FLAGS
+            new JoinUsingChorusFruitFlag(),
+            new JoinUsingEnderPearlFlag(),
+            new TeleportFlag(),
+            new SpawnLocationFlag(),
             // EXTRAS FLAGS
             new ChatFarewellFlag(),
-            new ChatGreetingFlag()
+            new ChatGreetingFlag(),
+            new DenyChorusFruitFlag(),
+            new DenyEnderPearlFlag(),
+            new DenyTeleportFlag()
         );
         Implements.register(this);
     }
